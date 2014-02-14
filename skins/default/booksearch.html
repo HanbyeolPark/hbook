@@ -1,0 +1,32 @@
+<!--#include("_header.html")-->
+
+<h2>Book Search </h2>
+
+	<form action="{getUrl()}" method="get" onsubmit="return procFilter(this, search)" id="board_search" no-error-return-url="true">
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="act" value="dispHbookContentSearch">
+<!--
+		<select name="searchtype">
+			<option value="book_title">제목</option>
+		</select>
+-->
+		<input name="searchterm" type="text" value="{htmlspecialchars($searchterm)}">
+		<button type="submit" class="btn" onclick="xGetElementById('board_search').submit();return false;">검색</button>
+	</form>
+
+
+<h2>Book Register</h2>
+
+<!-- 버튼 -->
+<div class="btn">
+	<a href="{getUrl('act','dispHbookContentWrite')}" title="{$lang->cmd_input}"><span><strong>이것을누르면빠른판매!!</strong></span></a>
+</div>
+
+<h2>나의 구매 목록</h2>
+
+<!-- 버튼 -->
+<div class="btn">
+	<a href="{getUrl('act','dispHbookMytrade')}" title="{$lang->cmd_input}"><span><strong>요것을누르믄나의목록!!</strong></span></a>
+</div>
+
+<!--#include("_footer.html")-->

@@ -1,0 +1,11 @@
+
+<h2>Info Search </h2>
+
+	<form action="{getUrl()}" method="get" onsubmit="return procFilter(this, search) " id="board_search" no-error-return-url="true">
+		<input type="hidden" name="act" value="dispHbookContentSearch">
+		<select name="searchtype">
+			<option value="book_title">책 제목</option>
+		</select>
+		<input name="searchterm" type="text" value="{htmlspecialchars($searchterm)}">
+		<button type="submit" class="btn" onclick="window.close();">검색</button>
+	</form>

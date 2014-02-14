@@ -1,0 +1,43 @@
+<!--상품 Content 출력 page :html table 버전-->
+<html>
+	<head>
+		<title> 상품 Content 출력 </title>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />	
+	</head>
+	<body>
+		<?php
+		include_once('AladdinOpenAPI.php');
+
+		if($isError) {
+			echo "<li>에러메세지: $errMsg</li>";
+		} else {
+			foreach($xmlParser->itemList as $item) {
+				echo "<li>";
+
+				$img = str_replace('&', '&amp;', $item["COVER"]);
+				echo "<img src='".$img."' alt='NO image' align='top' /><br>";
+
+				echo "<b>". $item['TITLE'] ."</b><br/>";
+				echo "author: ".$item['AUTHOR']."<br>";
+				echo "publisher: ".$item['PUBLISHER']."<br>";
+				echo "price: <s>".$item['PRICESTANDARD']."</s>→";
+				echo $item['PRICESALES']."<br>";
+
+				echo "description: ".$item['DESCRIPTION']."<br>";
+				echo "isbn: ".$item['ISBN']."<br>";
+				echo "isbn13: ".$item['ISBN13']."<br>";
+
+				$link = str_replace('&', '&amp;', $item["LINK"]);
+				echo "link: ".$link."<br>";
+				
+				echo '</li>';
+			}
+		}
+		?>
+
+		<br><br>
+		<!--<a href='{getUrl("act","'.$link.'")}'>알라딘에 이 책 사러가기!</a>-->
+		<a href="{$link}"> 알라딘에 이 책 사러가기! </a>
+		<br><br>
+	</body>
+</html>
